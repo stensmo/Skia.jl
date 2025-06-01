@@ -33,7 +33,7 @@ end
 	GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2);
 	GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, true);
 	GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
-	# (uncomment to enable correct color spaces) glfwWindowHint(GLFW_SRGB_CAPABLE, GL_TRUE);
+
 	GLFW.WindowHint(GLFW.STENCIL_BITS, 0);
 	#glfwWindowHint(GLFW_ALPHA_BITS, 0);
 	GLFW.WindowHint(GLFW.DEPTH_BITS, 0);
