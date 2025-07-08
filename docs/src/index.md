@@ -11,7 +11,7 @@ hero:
     alt: Skia.jl
   actions:
     - theme: alt
-      text: View on Github
+      text: View on Github 
       link: https://github.com/stensmo/Skia.jl
     - theme: alt
       text: API
