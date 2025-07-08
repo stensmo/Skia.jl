@@ -79,6 +79,10 @@ println(typeface)
 font = sk_font_new_with_values(typeface, font_size, scaleX, skewX)
 println(font)
 
+encoding = sk_text_encoding_t(0) # UTF 8
+
+text_blob = sk_textblob_make_from_string(str, font, encoding)
+
 
 x::Float32 = 60.0
 y::Float32 = 60.0
@@ -91,7 +95,7 @@ sk_paint_set_color(paint, paintColor)
 
 sk_canvas_draw_string(canvas, str, x, y, font, paint)
 
-sk_canvas_draw_string(canvas, str, x, y+100.0, font, paint)
+sk_canvas_draw_text_blob(canvas, text_blob, x, Float32(y+100.0), paint)
 
 	
 sk_canvas_draw_rect(canvas,rect, paint)
