@@ -26,4 +26,4 @@ makedocs(;
 
    
 
-DocumenterVitepress.deploydocs(; repo="github.com/stensmo/Skia.jl")
+#DocumenterVitepress.deploydocs(; repo="github.com/stensmo/Skia.jl")
