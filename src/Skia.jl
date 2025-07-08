@@ -8,6 +8,10 @@ function _doc_external(fname)
     return ""
 end
 
+function getDefaultFont()
+    
+end
+
 
 
 to_c_type(t::Type) = t
