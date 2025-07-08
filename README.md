@@ -1,14 +1,13 @@
 # Skia in Julia
 
-Support for the Skia libary in Julia. Skia is the 2D drawing library used by Chrome and other browsers to draw web pages. The library is suited for e.g. real time plotting on all platforms. 
+Support for the Skia libary in Julia. Skia is the 2D drawing library used by Chrome and other browsers to draw web pages. The library is suited for ,e.g., real time plotting/visualization on all platforms. 
 
-Currently, it works on Linux, and sample code is only provided for OpenGL. Vulkan support will be added, and hopefully Metal support as well. Mac and Windows will be added later.
+Currently, it works on Linux, Mac and FreeBSD. Windows support is coming.
 
 ```julia
 
 using Skia
 using GLFW
-
 
 
 function runLoop()
@@ -17,7 +16,7 @@ function runLoop()
     WIDTH::Int32 = 960
     HEIGHT::Int32 = 640
 
-    window, sContext, canvas = Skia.init_GLFW(WIDTH, HEIGHT)
+    window, sContext, canvas = Skia.init_GLFW(GLFW, WIDTH, HEIGHT)
 
 
     x::Float32 = 100.0
@@ -34,10 +33,8 @@ function runLoop()
 
         GLFW.PollEvents()
 
-        paintColor::UInt32 = 0xFF000000::UInt32
-        sk_paint_set_color(paint, paintColor)
-
-        sk_canvas_draw_circle(canvas, x, y, radius, paint)
+        colorBackground::UInt32 = 0xFF000000::UInt32
+        sk_canvas_clear(canvas, colorBackground )
 
         y+=1
         
