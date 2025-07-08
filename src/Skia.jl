@@ -1,12 +1,13 @@
 module Skia
 
-using Skia_jll
-
-const libskia = Skia_jll.libskia
-
-function _doc_external(fname)
-    return ""
+if !Sys.iswindows()
+    using Skia_jll
+    const libskia = Skia_jll.libskia
+else 
+    const libskia = "C:\\Windows\\System32\\Skia.dll"
 end
+
+import GLFW.GLFW
 
 function init_skia(width::Int32, height::Int32)
 
@@ -23,7 +24,6 @@ function init_skia(width::Int32, height::Int32)
 end
 
 function init_GLFW(width::Int32, height::Int32)
-
    
     GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
     GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2);
@@ -50,6 +50,12 @@ function init_GLFW(width::Int32, height::Int32)
     return window, sContext, canvas
 
 end
+
+function _doc_external(fname)
+    return ""
+end
+
+
 
 function getDefaultFont()
     return "Arial"
