@@ -7,7 +7,7 @@ else
     const libskia = "C:\\Windows\\System32\\Skia.dll"
 end
 
-import GLFW.GLFW
+
 
 function init_skia(width::Int32, height::Int32)
 
@@ -23,8 +23,9 @@ function init_skia(width::Int32, height::Int32)
 	return sSurface, sContext
 end
 
-function init_GLFW(width::Int32, height::Int32)
-   
+function init_GLFW(GLFW, width::Int32, height::Int32)
+ 
+
     GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
     GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2);
     GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, true);
