@@ -12,7 +12,7 @@ pages = [
 makedocs(; 
     sitename = "Skia.jl Documentation", 
     authors = "Erik Stensmo",
-    modules = [SFTPClient],
+    modules = [Skia],
     warnonly = true,
     checkdocs=:all,
     format=DocumenterVitepress.MarkdownVitepress(
