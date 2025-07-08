@@ -53,7 +53,7 @@ fontmgr = sk_fontmgr_ref_default()
 	sk_fontmgr_get_family_name(fontmgr, Int32(i), refFamilyName)
 
 	famName = unsafe_string(sk_string_get_c_str(refFamilyName))
-	#println("Font famility: $(famName)")
+	println("Font famility: $(famName)")
 
 
   end
@@ -74,7 +74,7 @@ fontStyle = sk_fontstyle_new( weight, width, Skia.SK_FONT_STYLE_SLANT_UPRIGHT)
 typeface = sk_fontmgr_match_family_style(fontmgr, "Arial", fontStyle)
 println(typeface)
 
-font = sk_font_new_with_values(typeface)
+font = sk_font_new_with_values(typeface, font_size, scaleX, skewX)
 println(font)
 
 
