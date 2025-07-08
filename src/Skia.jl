@@ -1075,7 +1075,7 @@ end
 
 
 """
-    sk_canvas_draw_string(canvas, text, byte_length::Csize_t, encoding::sk_text_encoding_t, x::Cfloat, y::Cfloat, cfont, cpaint)
+    sk_canvas_draw_string(canvas, text, x::Cfloat, y::Cfloat, cfont, cpaint)
 
 $(_doc_external(:sk_canvas_draw_string))
 """
