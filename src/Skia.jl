@@ -3145,13 +3145,23 @@ function sk_textblob_get_intercepts(blob, bounds, intervals, paint)
 end
 
 """
-    sk_textblob_make_from_text(text, byteLength::Csize_t, font, encoding::sk_text_encoding_t)
+    sk_textblob_make_from_text(text, font, encoding::sk_text_encoding_t)
 
 $(_doc_external(:sk_textblob_make_from_text))
 """
 function sk_textblob_make_from_text(text, byteLength::Csize_t, font, encoding::sk_text_encoding_t)
     ccall((:sk_textblob_make_from_text, libskia), Ptr{sk_text_blob_t}, (Ptr{Cvoid}, Csize_t, Ptr{sk_font_t}, sk_text_encoding_t), text, byteLength, font, encoding)
 end
+
+"""
+    sk_textblob_make_from_string(text, font, encoding::sk_text_encoding_t)
+
+$(_doc_external(:sk_textblob_make_from_string))
+"""
+function sk_textblob_make_from_string(text, font, encoding::sk_text_encoding_t)
+    ccall((:sk_textblob_make_from_string, libskia), Ptr{sk_text_blob_t}, (Ptr{Cchar}, Ptr{sk_font_t}, sk_text_encoding_t), text, font, encoding)
+end
+
 
 """
     sk_textblob_unref(blob)
