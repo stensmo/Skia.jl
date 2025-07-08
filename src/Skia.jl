@@ -1073,6 +1073,16 @@ function sk_canvas_draw_round_rect(canvas, crect, rx::Cfloat, ry::Cfloat, cpaint
     ccall((:sk_canvas_draw_round_rect, libskia), Cvoid, (Ptr{sk_canvas_t}, Ptr{sk_rect_t}, Cfloat, Cfloat, Ptr{sk_paint_t}), canvas, crect, rx, ry, cpaint)
 end
 
+
+"""
+    sk_canvas_draw_string(canvas, text, byte_length::Csize_t, encoding::sk_text_encoding_t, x::Cfloat, y::Cfloat, cfont, cpaint)
+
+$(_doc_external(:sk_canvas_draw_string))
+"""
+function sk_canvas_draw_string(canvas, text, x::Cfloat, y::Cfloat, cfont, cpaint)
+    ccall((:sk_canvas_draw_string, libskia), Cvoid, (Ptr{sk_canvas_t}, Ptr{Cchar}, Cfloat, Cfloat, Ptr{sk_font_t}, Ptr{sk_paint_t}), canvas, text, x, y, cfont, cpaint)
+end
+
 """
     sk_canvas_draw_simple_text(canvas, text, byte_length::Csize_t, encoding::sk_text_encoding_t, x::Cfloat, y::Cfloat, cfont, cpaint)
 
