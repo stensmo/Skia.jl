@@ -8,7 +8,51 @@ function _doc_external(fname)
     return ""
 end
 
+function init_skia(width::Int32, height::Int32)
+
+	interface = Skia.gr_glinterface_create_native_interface()
+	sContext = Skia.gr_direct_context_make_gl(interface)
+	framebufferInfo = Skia.gr_gl_framebufferinfo_t(0, 0x8058, false)
+	backendRenderTarget  = Skia.gr_backendrendertarget_new_gl(width, height, Int32(0), Int32(0), Ref(framebufferInfo))
+	surfaceOrigin =  Skia.GR_SURFACE_ORIGIN_BOTTOM_LEFT	
+	colorType = Skia.SK_COLOR_TYPE_RGBA_8888
+	colorSpace = C_NULL
+	sSurface = sk_surface_new_backend_render_target(sContext, backendRenderTarget, surfaceOrigin, colorType, colorSpace, C_NULL)
+
+	return sSurface, sContext
+end
+
+function init_GLFW(width::Int32, height::Int32)
+
+   
+    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
+    GLFW.WindowHint(GLFW.CONTEXT_VERSION_MINOR, 2);
+    GLFW.WindowHint(GLFW.OPENGL_FORWARD_COMPAT, true);
+    GLFW.WindowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
+
+    GLFW.WindowHint(GLFW.STENCIL_BITS, 0);
+        
+    GLFW.WindowHint(GLFW.DEPTH_BITS, 0);
+
+    window = GLFW.CreateWindow(width, height, "GLFW.jl")
+
+ 
+
+    # Make the window's context current
+    GLFW.MakeContextCurrent(window)
+
+    sSurface, sContext = init_skia(width, height)
+
+    canvas = sk_surface_get_canvas(sSurface)
+
+    GLFW.SwapInterval(1)
+
+    return window, sContext, canvas
+
+end
+
 function getDefaultFont()
+    return "Arial"
     
 end
 
