@@ -17,7 +17,7 @@ makedocs(;
     checkdocs=:all,
     format=DocumenterVitepress.MarkdownVitepress(
         repo = "github.com/stensmo/Skia.jl", # this must be the full URL!
-        devbranch = "main",
+        devbranch = "main", 
     ),
     pages=pages,
 )
