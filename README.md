@@ -10,7 +10,6 @@ Currently, it works on Linux, Mac and FreeBSD. Windows support is coming. Metal 
 
 using  OrdinaryDiffEq, DiffEqCallbacks
 
-
 using Skia
 using GLFW
 
