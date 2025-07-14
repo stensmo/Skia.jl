@@ -1,4 +1,4 @@
-const REPO = "stensmo/WiringPi.jl";
+const REPO = "stensmo/Skia.jl";
 
 export default {
   async load() {

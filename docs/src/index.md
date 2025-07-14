@@ -25,7 +25,7 @@ features:
     details: PDF, OpenGL
     link: /api
 
-  - icon: 🔐
+  - icon: 🚀
     title: High performance
     details: Probably the most performant library
     link: /api
