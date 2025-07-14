@@ -7,6 +7,37 @@ else
     const libskia = "C:\\Windows\\System32\\Skia.dll"
 end
 
+const refreshTime = Ref(0.0)
+
+# Get the hertz from the monitor and calculate the time step
+function getMonitorTimeStep(GLFW)
+    refresh = GLFW.GetVideoMode(GLFW.GetPrimaryMonitor()).refreshrate
+    timeStep = 1.0/refresh
+    refreshTime[] = timeStep
+    return timeStep
+end
+
+
+const hasSwapControl = Ref(true)
+const lastTime = Ref(0.0)
+
+function SwapBuffers(GLFW, window)
+
+
+    if !(hasSwapControl[])
+        if (refreshTime[] - (time()-lastTime[])) > 0
+            sleep(refreshTime[] - (time()-lastTime[]))
+        end
+    end
+
+    GLFW.SwapBuffers(window)
+
+    if !(hasSwapControl[])
+         lastTime[] = time()
+    end
+
+end
+
 
 
 function init_skia(width::Int32, height::Int32)
@@ -45,6 +76,9 @@ function init_GLFW(GLFW, width::Int32, height::Int32)
     sSurface, sContext = init_skia(width, height)
 
     canvas = sk_surface_get_canvas(sSurface)
+
+    hasSwapControl[] = GLFW.ExtensionSupported("WGL_EXT_swap_control")
+
 
     GLFW.SwapInterval(1)
 
