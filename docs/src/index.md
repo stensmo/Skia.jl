@@ -1,3 +1,4 @@
+```@raw html
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
@@ -29,4 +30,3 @@ features:
     details: Probably the most performant library
     link: /api
 
----

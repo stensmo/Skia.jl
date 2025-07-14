@@ -1,2 +1,6 @@
-Modules = [Skia]
+# Skia API Documentation
+
+```@autodocs
+Modules = [WiringPi]
 Private = false
+```
