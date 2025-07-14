@@ -7,7 +7,7 @@ import {data} from "./stargazers.data";
 const props = defineProps({
   repoUrl: {
     type: String,
-    default: "https://github.com/stensmo/WiringPi.jl"
+    default: "https://github.com/stensmo/Skia.jl"
   }
 });
 
