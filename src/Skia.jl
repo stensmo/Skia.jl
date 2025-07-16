@@ -82,7 +82,7 @@ function init_GLFW(GLFW, width::Int32, height::Int32)
 
     GLFW.SwapInterval(1)
 
-    return window, sContext, canvas
+    return window, sContext, canvas, sSurface
 
 end
 
@@ -110,6 +110,26 @@ function sk_rect_offset(rect, x::Float32, y::Float32)
     newY::Float32 = rect[].top + y
     rect = sk_rect_t(newX, newY, w+newX, h+newY)
     return Ref(rect)
+end
+
+"""
+$(_doc_external(:sk_data_t))
+"""
+mutable struct sk_data_t end
+
+function sk_write_data_to_file(fileName::AbstractString, data::Ptr{sk_data_t})
+    imageData = sk_data_get_data(data)
+
+    dataLen = sk_data_get_size(data)
+
+    uint8Array = Base.unsafe_convert(Ptr{UInt8}, imageData)
+
+    wrappedArray = unsafe_wrap(Array, uint8Array, dataLen; own = false)
+
+    open("skia_output.png", "w") do io
+        write(io, wrappedArray)
+    end
+
 end
 
 
@@ -147,10 +167,7 @@ struct sk_text_blob_builder_run_buffer_t
     clusters::Ptr{UInt32}
 end
 
-"""
-$(_doc_external(:sk_data_t))
-"""
-mutable struct sk_data_t end
+
 
 """
     sk_ipoint_t

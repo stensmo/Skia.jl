@@ -63,12 +63,23 @@ function draw(canvas)
     sk_canvas_draw_round_rect(canvas, rect, 10.0f0, 10.0f0, paint)
 end
 
+
+
 function main()
     WIDTH::Int32 = 512
     HEIGHT::Int32 = 512
-    window, sContext, canvas = Skia.init_GLFW(GLFW, WIDTH, HEIGHT)
+    window, sContext, canvas, surface = Skia.init_GLFW(GLFW, WIDTH, HEIGHT)
     draw(canvas)
     Skia.gr_direct_context_flush_and_submit(sContext, false)
+
+    snapshot = sk_surface_make_image_snapshot(surface)
+
+    
+    compression_level::Int32 = 100
+    png = sk_encode_png(sContext, snapshot, compression_level)
+
+    sk_write_data_to_file("skia_output.png", png)
+
     Skia.SwapBuffers(GLFW, window)
     
     while !GLFW.WindowShouldClose(window)
