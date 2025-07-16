@@ -97,6 +97,17 @@ function getDefaultFont()
     
 end
 
+function sk_rect_makexywh(x::Float32, y::Float32, w::Float32, h::Float32)
+    rect = sk_rect_t(x, y, w+x, h+y)
+    return Ref(rect)
+
+end
+
+function sk_rect_offset(rect, x, y)
+    
+end
+
+
 
 
 to_c_type(t::Type) = t

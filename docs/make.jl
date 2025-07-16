@@ -5,7 +5,7 @@ using Documenter, DocumenterVitepress
 pages = [
     "Home" => "index.md",
     "API" => "api.md",
-    "Troubleshooting" => "troubleshooting.md",
+    "Examples" => "examples.md",
 ]
 
 
