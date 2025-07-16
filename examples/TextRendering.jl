@@ -12,7 +12,7 @@ function draw(canvas)
     width::Int32 = Int32(Skia.SK_FONT_STYLE_WIDTH_NORMAL)
 
     fontStyle = sk_fontstyle_new( weight, width, Skia.SK_FONT_STYLE_SLANT_UPRIGHT)
-    typeface = sk_fontmgr_match_family_style(fontmgr, "Arial", fontStyle)
+    typeface = sk_fontmgr_match_family_style(fontmgr, Skia.getDefaultFont(), fontStyle)
 
     #const char* fontFamily = nullptr;  // Default system family, if it exists.
     #SkFontStyle fontStyle;  // Default is normal weight, normal width,  upright slant.

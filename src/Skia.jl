@@ -126,7 +126,7 @@ function sk_write_data_to_file(fileName::AbstractString, data::Ptr{sk_data_t})
 
     wrappedArray = unsafe_wrap(Array, uint8Array, dataLen; own = false)
 
-    open("skia_output.png", "w") do io
+    open(fileName, "w") do io
         write(io, wrappedArray)
     end
 
