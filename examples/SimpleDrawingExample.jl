@@ -5,8 +5,9 @@ function draw(canvas)
 
 
 
-    #canvas->drawColor()
-    sk_canvas_draw_color(canvas, 0xFFFFFFFF, Skia.SK_BLEND_MODE_CLEAR)
+    #canvas->drawColor(SK_ColorWHITE);
+    colorBackground::UInt32 = 0xFFFFFFFF::UInt32
+    sk_canvas_clear(canvas, colorBackground )
 
    
     
@@ -41,7 +42,7 @@ function draw(canvas)
     #paint.setColor(0xffDB4437);
     sk_paint_set_color(paint, 0xffDB4437::UInt32)
     #canvas->drawRRect(oval, paint);
-    sk_canvas_draw_oval(canvas, Ref(oval), paint)
+    sk_canvas_draw_oval(canvas, oval, paint)
 
     #paint.setColor(0xff0F9D58);
     sk_paint_set_color(paint, 0xff0F9D58::UInt32)
@@ -68,5 +69,12 @@ function main()
     window, sContext, canvas = Skia.init_GLFW(GLFW, WIDTH, HEIGHT)
     draw(canvas)
     Skia.gr_direct_context_flush_and_submit(sContext, false)
-     Skia.SwapBuffers(GLFW, window)
+    Skia.SwapBuffers(GLFW, window)
+    
+    while !GLFW.WindowShouldClose(window)
+        GLFW.WaitEvents()
+    end
+
+    GLFW.DestroyWindow(window)
+
 end

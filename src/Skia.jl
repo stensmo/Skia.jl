@@ -103,8 +103,13 @@ function sk_rect_makexywh(x::Float32, y::Float32, w::Float32, h::Float32)
 
 end
 
-function sk_rect_offset(rect, x, y)
-    
+function sk_rect_offset(rect, x::Float32, y::Float32)
+    w::Float32 = rect[].right - rect[].left
+    h::Float32 = rect[].bottom - rect[].top
+    newX::Float32 = rect[].left + x
+    newY::Float32 = rect[].top + y
+    rect = sk_rect_t(newX, newY, w+newX, h+newY)
+    return Ref(rect)
 end
 
 
