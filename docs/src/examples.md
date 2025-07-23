@@ -1,5 +1,7 @@
 # Examples
 
+
+![Simple drawing example](simple_drawing_example.png)
 ```julia
 using Skia
 using GLFW
