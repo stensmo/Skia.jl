@@ -1,7 +1,9 @@
 # Examples
 
 
-![Simple drawing example](simple_drawing_example.png)
+![Simple drawing example](assets/simple_drawing_example.png)
+
+
 ```julia
 using Skia
 using GLFW
@@ -97,6 +99,10 @@ end
 
 ```
 
+
+![Bezier curves](assets/bezier_curves.png)
+
+
 ```julia
 
 using Skia
@@ -168,6 +174,9 @@ function main()
 end
 
 ```
+
+![Path effects](assets/path_effects.png)
+
 
 ```julia
 using Skia
@@ -253,6 +262,9 @@ function main()
 
 end
 ```
+
+![Text rendering](assets/text_rendering.pn)
+
 
 ```julia
 using Skia
@@ -453,6 +465,9 @@ runLoop(sol.u, canvas, paint, sContext)
 GLFW.DestroyWindow(window)
 
 ```
+
+
+
 
 ```julia
 using Skia
