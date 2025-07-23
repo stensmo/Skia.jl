@@ -263,7 +263,7 @@ function main()
 end
 ```
 
-![Text rendering](assets/text_rendering.pn)
+![Text rendering](assets/text_rendering.png)
 
 
 ```julia
