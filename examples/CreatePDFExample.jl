@@ -23,7 +23,7 @@ encodingQuality = 1
 
 metadata = Ref(sk_metadata_t(pointer("title"), pointer("author"), pointer("subject"), pointer("keywords"), pointer("creator"), pointer("producer"), creation, modified, dpi, 0, encodingQuality))
 
-fileWstream = sk_file_wstream_new("test.pdf")
+fileWstream = sk_file_wstream_new("CreatePDFExample.pdf")
 
 stream = sk_file_wstream_as_wstream(fileWstream)
 
@@ -45,3 +45,5 @@ sk_document_end_page(document)
 sk_document_close(document)
 
 sk_file_wstream_flush(fileWstream)
+
+

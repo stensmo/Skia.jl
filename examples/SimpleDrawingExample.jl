@@ -78,7 +78,7 @@ function main()
     compression_level::Int32 = 100
     png = sk_encode_png(sContext, snapshot, compression_level)
 
-    sk_write_data_to_file("skia_output.png", png)
+    sk_write_data_to_file("simple_drawing_example.png", png)
 
     Skia.SwapBuffers(GLFW, window)
     

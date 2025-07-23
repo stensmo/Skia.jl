@@ -69,7 +69,7 @@ function main()
     compression_level::Int32 = 100
     png = sk_encode_png(sContext, snapshot, compression_level)
 
-    sk_write_data_to_file("star.png", png)
+    sk_write_data_to_file("path_effects.png", png)
 
     Skia.SwapBuffers(GLFW, window)
     

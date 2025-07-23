@@ -2,8 +2,6 @@ using Skia
 using GLFW
 
 
-
-
 function draw(canvas) 
 
     fontmgr = sk_fontmgr_ref_default()
@@ -27,10 +25,11 @@ function draw(canvas)
 
 
     #font1.setEdging(SkFont::Edging::kAntiAlias);
-    # Not yet supported in Skia.jl
+    # Not yet supported in Skia.jl. Fortunately AntiAlias is default
+
 
     #font2.setEdging(SkFont::Edging::kAntiAlias);
-    # Not yet supported in Skia.jl
+    # Not yet supported in Skia.jl. Fortunately AntiAlias is default
 
     # Note: MakeFromString may fail to produce expected results if the typeface
     # does not have glyphs for the characters in the string.  The characters
