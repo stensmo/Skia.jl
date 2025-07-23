@@ -15,6 +15,9 @@ hero:
       text: View on Github
       link: https://github.com/stensmo/Skia.jl
     - theme: alt
+      text: Examples
+      link: /examples
+    - theme: alt
       text: API
       link: /api
 
