@@ -1,6 +1,6 @@
 # Skia in Julia
 
-Support for the Skia libary in Julia. Skia is the 2D drawing library used by Chrome and other browsers to draw web pages. The library is suited for, e.g., real time plotting/visualization on all platforms. 
+Support for the Skia libary in Julia. Draw 2D drawings using GPU (OpenGL). Skia is the 2D drawing library used by Chrome and other browsers to draw web pages. The library is suited for, e.g., real time plotting/visualization on all platforms. 
 
 Currently, it works on Linux, Mac and FreeBSD. Windows support is coming. Metal will be supported in the future as well as Vulkan.
 
