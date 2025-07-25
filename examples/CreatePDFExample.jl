@@ -46,4 +46,6 @@ sk_document_close(document)
 
 sk_file_wstream_flush(fileWstream)
 
+sk_file_wstream_delete(fileWstream);
+
 
