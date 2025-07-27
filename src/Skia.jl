@@ -94,6 +94,7 @@ end
 
 
 function getDefaultFont()
+    Sys.islinux() && return "DejaVu Sans"
     return "Arial"
     
 end

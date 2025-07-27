@@ -1,6 +1,7 @@
 using Skia
 
-
+page_width::Float32 = 800
+page_height::Float32 = 800
 
 function draw(canvas, font) 
 
@@ -70,38 +71,20 @@ function draw(canvas, font)
 end
 
 
-page_width::Float32 = 800
-page_height::Float32 = 800
-
-timeZoneMinutes::Int16 = 0
-year::UInt16 = 2025
-month::UInt8 = 06
-
-dayOfWeek::UInt8 = 01
-day::UInt8 = 1
-hour::UInt8 = 2
-minute::UInt8 = 3
-second::UInt8 = 4
 
 
-
-creation = sk_date_time_t(timeZoneMinutes, year, month, dayOfWeek, day, hour, minute, second)
-
-modified = sk_date_time_t(timeZoneMinutes, year, month, dayOfWeek, day, hour, minute, second)
-dpi = 300
-encodingQuality = 1
-
-metadata = Ref(sk_metadata_t(pointer("title"), pointer("author"), pointer("subject"), pointer("keywords"), pointer("creator"), pointer("producer"), creation, modified, dpi, 0, encodingQuality))
-
-fileWstream = sk_file_wstream_new("CreatePDFExample.pdf")
+fileWstream = sk_file_wstream_new("CreateSVGExample.svg")
 
 stream = sk_file_wstream_as_wstream(fileWstream)
 
-document = sk_document_make_pdf(stream, metadata)
-canvas = sk_document_begin_page(document, page_width, page_height)
+bounds = Ref(sk_rect_t(0, 0, 800, 800))
+
+flags = UInt32(0)
+
+
+canvas = sk_surface_make_canvas_svg(bounds, stream, flags)
 
 fontmgr = sk_fontmgr_ref_default()
-
 weight::Int32 = Int32(Skia.SK_FONT_STYLE_WEIGHT_NORMAL)
 width::Int32 = Int32(Skia.SK_FONT_STYLE_WIDTH_NORMAL)
 
@@ -110,11 +93,9 @@ typeface = sk_fontmgr_match_family_style(fontmgr, Skia.getDefaultFont(), fontSty
 
 font = sk_font_new_with_values(typeface, 64.0f0, 1.0f0, 0.0f0)
 
+
 draw(canvas, font)
 
-sk_document_end_page(document)
-
-sk_document_close(document)
 
 sk_file_wstream_flush(fileWstream)
 
