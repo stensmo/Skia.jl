@@ -5,6 +5,7 @@ if !Sys.iswindows()
     const libskia = Skia_jll.libskia
 else 
     const libskia = "C:\\Windows\\System32\\Skia.dll"
+   
 end
 
 const refreshTime = Ref(0.0)
@@ -708,6 +709,17 @@ $(_doc_external(:sk_font_hinting_t))
     SK_FONT_HINTING_SLIGHT = 1
     SK_FONT_HINTING_NORMAL = 2
     SK_FONT_HINTING_FULL = 3
+end
+
+"""
+    sk_font_edging_t
+
+\$(_doc_external(:sk_font_edging_t))
+"""
+@enum sk_font_edging_t::UInt32 begin
+    SK_FONT_EDGING_ALIAS = 0
+    SK_FONT_EDGING_ANTIALIAS = 1
+    SK_FONT_EDGING_SUBPIXEL_ANTIALIAS = 2
 end
 
 """
@@ -1581,6 +1593,15 @@ $(_doc_external(:sk_font_set_hinting))
 """
 function sk_font_set_hinting(font, value::sk_font_hinting_t)
     ccall((:sk_font_set_hinting, libskia), Cvoid, (Ptr{sk_font_t}, sk_font_hinting_t), font, value)
+end
+
+"""
+    sk_font_set_edging(font, value::sk_font_edging_t)
+
+\$(_doc_external(:sk_font_set_edging))
+"""
+function sk_font_set_edging(font, value::sk_font_edging_t)
+    ccall((:sk_font_set_edging, libskia), Cvoid, (Ptr{sk_font_t}, sk_font_edging_t), font, value)
 end
 
 """
@@ -3157,6 +3178,25 @@ $(_doc_external(:sk_surface_get_canvas))
 function sk_surface_get_canvas(surface)
     ccall((:sk_surface_get_canvas, libskia), Ptr{sk_canvas_t}, (Ptr{sk_surface_t},), surface)
 end
+
+"""
+    sk_surface_make_canvas_svg(bounds, stream, flags::UInt32)
+
+\$(_doc_external(:sk_surface_make_canvas_svg))
+"""
+function sk_surface_make_canvas_svg(bounds, stream, flags::UInt32)
+    ccall((:sk_surface_make_canvas_svg, libskia), Ptr{sk_canvas_t}, (Ptr{sk_rect_t}, Ptr{sk_wstream_t}, UInt32), bounds, stream, flags)
+end
+
+
+
+
+function sk_hello()
+        ccall((:sk_hello, libskia), Ptr{sk_canvas_t}, ())
+end
+
+
+
 
 """
     sk_surface_new_backend_render_target(context, target, origin::gr_surface_origin_t, colorType::sk_color_type_t, colorspace, props)
