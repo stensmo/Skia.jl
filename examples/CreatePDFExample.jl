@@ -30,6 +30,18 @@ stream = sk_file_wstream_as_wstream(fileWstream)
 document = sk_document_make_pdf(stream, metadata)
 canvas = sk_document_begin_page(document, page_width, page_height)
 
+fontmgr = sk_fontmgr_ref_default()
+
+weight::Int32 = Int32(Skia.SK_FONT_STYLE_WEIGHT_NORMAL)
+width::Int32 = Int32(Skia.SK_FONT_STYLE_WIDTH_NORMAL)
+
+fontStyle = sk_fontstyle_new( weight, width, Skia.SK_FONT_STYLE_SLANT_UPRIGHT)
+typeface = sk_fontmgr_match_family_style(fontmgr, Skia.getDefaultFont(), fontStyle)
+
+font = sk_font_new_with_values(typeface, 64.0f0, 1.0f0, 0.0f0)
+
+blob1 = sk_textblob_make_from_string("Hello Skia from Julia!", font, sk_text_encoding_t(0))
+
 paint = sk_paint_new()
 rect = Ref(sk_rect_t(100, 200, 300, 500))
 
@@ -39,6 +51,8 @@ sk_paint_set_color(paint, paintColor)
 
 	
 sk_canvas_draw_rect(canvas,rect, paint)
+
+sk_canvas_draw_text_blob(canvas, blob1, 20.0f0, 64.0f0, paint)
 
 sk_document_end_page(document)
 
