@@ -26,9 +26,10 @@ function draw(canvas)
 
     #font1.setEdging(SkFont::Edging::kAntiAlias);
     # Not yet supported in Skia.jl. Fortunately AntiAlias is default
-
+    sk_font_set_edging(font1, Skia.SK_FONT_EDGING_SUBPIXEL_ANTIALIAS)
 
     #font2.setEdging(SkFont::Edging::kAntiAlias);
+     sk_font_set_edging(font2, Skia.SK_FONT_EDGING_SUBPIXEL_ANTIALIAS)
     # Not yet supported in Skia.jl. Fortunately AntiAlias is default
 
     # Note: MakeFromString may fail to produce expected results if the typeface
